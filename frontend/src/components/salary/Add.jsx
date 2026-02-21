@@ -152,7 +152,7 @@ const Add = () => {
 
     setLoading(true);
     try {
-      const response = await axios.post('http://localhost:2000/api/salary/add', salary, {
+      const response = await axios.post('http://localhost:5000/api/salary/add', salary, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
@@ -261,11 +261,10 @@ const Add = () => {
                   <div className="relative" ref={dropdownRef}>
                     <div
                       onClick={() => toggleDropdown('employeeId')}
-                      className={`w-full px-4 py-2 rounded-lg bg-gray-900/70 border text-gray-200 focus:outline-none focus:ring-2 transition cursor-pointer flex justify-between items-center ${
-                        !salary.department
+                      className={`w-full px-4 py-2 rounded-lg bg-gray-900/70 border text-gray-200 focus:outline-none focus:ring-2 transition cursor-pointer flex justify-between items-center ${!salary.department
                           ? 'border-gray-600 opacity-50 cursor-not-allowed'
                           : 'border-gray-700 focus:ring-cyan-400'
-                      }`}
+                        }`}
                     >
                       <span className={salary.employeeId ? 'text-gray-200' : 'text-gray-400'}>
                         {salary.employeeId
@@ -314,11 +313,10 @@ const Add = () => {
                         name="basicSalary"
                         value={salary.basicSalary}
                         onChange={handleChange}
-                        className={`w-full pl-8 pr-4 py-2 rounded-lg bg-gray-900/70 border placeholder-gray-400 text-gray-200 focus:outline-none focus:ring-2 transition ${
-                          errors.basicSalary
+                        className={`w-full pl-8 pr-4 py-2 rounded-lg bg-gray-900/70 border placeholder-gray-400 text-gray-200 focus:outline-none focus:ring-2 transition ${errors.basicSalary
                             ? 'border-red-500 focus:ring-red-500'
                             : 'border-gray-700 focus:ring-cyan-400'
-                        }`}
+                          }`}
                         placeholder="0.00"
                         required
                         min="0"
@@ -389,11 +387,10 @@ const Add = () => {
                         name="payDate"
                         value={salary.payDate}
                         onChange={handleChange}
-                        className={`w-full px-4 py-3 rounded-lg bg-gray-900/70 border placeholder-gray-400 text-gray-200 focus:outline-none focus:ring-2 transition-all duration-200 ${
-                          errors.payDate
+                        className={`w-full px-4 py-3 rounded-lg bg-gray-900/70 border placeholder-gray-400 text-gray-200 focus:outline-none focus:ring-2 transition-all duration-200 ${errors.payDate
                             ? 'border-red-500 focus:ring-red-500'
                             : 'border-gray-700 focus:ring-cyan-400 focus:border-cyan-400'
-                        }`}
+                          }`}
                         required
                         min={new Date().toISOString().split('T')[0]}
                       />
@@ -490,9 +487,8 @@ const Add = () => {
 
                 <div className="flex justify-between items-center py-4 border-t-2 border-gray-600">
                   <span className="text-sm font-semibold text-white">Net Salary:</span>
-                  <span className={`text-xl font-bold ${
-                    netSalary >= 0 ? 'text-green-400' : 'text-red-400'
-                  }`}>
+                  <span className={`text-xl font-bold ${netSalary >= 0 ? 'text-green-400' : 'text-red-400'
+                    }`}>
                     {formatCurrency(netSalary)}
                   </span>
                 </div>

@@ -30,7 +30,7 @@ const Add = () => {
         return;
       }
 
-      const response = await axios.post('http://localhost:2000/api/leave/add', formData, {
+      const response = await axios.post('http://localhost:5000/api/leave/add', formData, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -55,7 +55,7 @@ const Add = () => {
       alert(error.response?.data?.error || 'Failed to submit leave request. Please try again.');
     }
   };
-  
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900 py-8 px-4">
       <div className="max-w-2xl mx-auto">

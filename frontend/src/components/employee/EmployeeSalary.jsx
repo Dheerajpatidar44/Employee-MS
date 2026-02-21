@@ -51,7 +51,7 @@ const EmployeeSalary = () => {
       }
 
       // Fetch all salary records
-      const salaryResponse = await axios.get(`http://localhost:2000/api/salary/employee/${user.employeeId}`, {
+      const salaryResponse = await axios.get(`http://localhost:5000/api/salary/employee/${user.employeeId}`, {
         headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
       });
 
@@ -155,9 +155,9 @@ const EmployeeSalary = () => {
                     <p className="text-green-400 text-2xl font-bold">{formatDate(nextPayDate)}</p>
                     <p className="text-green-300 text-sm mt-1">
                       {daysUntilNextPay === 0 ? 'Payment due today!' :
-                       daysUntilNextPay === 1 ? 'Tomorrow' :
-                       daysUntilNextPay > 1 ? `Your salary date will be processed in ${daysUntilNextPay} days` :
-                       `${daysUntilNextPay} days remaining`}
+                        daysUntilNextPay === 1 ? 'Tomorrow' :
+                          daysUntilNextPay > 1 ? `Your salary date will be processed in ${daysUntilNextPay} days` :
+                            `${daysUntilNextPay} days remaining`}
                     </p>
                   </div>
                   <div className="text-right">
@@ -321,8 +321,8 @@ const EmployeeSalary = () => {
                   <div className="text-3xl font-bold text-blue-400 mb-2">{daysUntilNextPay}</div>
                   <p className="text-blue-300 text-sm mb-2">
                     {daysUntilNextPay === 0 ? 'Days until payment' :
-                     daysUntilNextPay === 1 ? 'Day until payment' :
-                     'Days until payment'}
+                      daysUntilNextPay === 1 ? 'Day until payment' :
+                        'Days until payment'}
                   </p>
                   <p className="text-gray-400 text-xs">
                     Next payment: {formatDate(nextPayDate)}

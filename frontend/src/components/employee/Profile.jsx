@@ -12,7 +12,7 @@ const Profile = () => {
     const fetchEmployeeProfile = async () => {
       setLoading(true)
       try {
-        const response = await axios.get('http://localhost:2000/api/employee/', {
+        const response = await axios.get('http://localhost:5000/api/employee/', {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
           }

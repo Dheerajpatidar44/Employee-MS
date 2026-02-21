@@ -48,10 +48,10 @@ const Add = () => {
   useEffect(() => {
     const fetchDepartments = async () => {
       try {
-        const response = await axios.get('http://localhost:2000/api/department/', {
-        headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`,
-        }
+        const response = await axios.get('http://localhost:5000/api/department/', {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+          }
         });
         if (response.data.success) {
           setDepartments(response.data.departments)
@@ -101,7 +101,7 @@ const Add = () => {
 
 
     try {
-      const response = await axios.post('http://localhost:2000/api/employee/add', formData, {
+      const response = await axios.post('http://localhost:5000/api/employee/add', formData, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
           'Content-Type': 'multipart/form-data'
@@ -147,7 +147,7 @@ const Add = () => {
         </h3>
 
         <form onSubmit={handleSubmit} ref={dropdownRef} className="bg-gray-800/60 backdrop-blur-lg shadow-xl rounded-xl p-8 border border-gray-700">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2">Name</label>
               <input
@@ -384,15 +384,22 @@ const Add = () => {
                 </div>
                 {openDropdown === 'department' && (
                   <div className="absolute z-10 mt-1 w-full bg-gray-800 border border-gray-700 rounded-lg shadow-lg max-h-40 overflow-y-auto">
-                    {departments.map(dep => (
-                      <div
-                        key={dep._id}
-                        onClick={(e) => { e.stopPropagation(); selectOption('department', dep._id); }}
-                        className="px-4 py-2 hover:bg-gray-700 cursor-pointer text-gray-200"
-                      >
-                        {dep.dep_name}
-                      </div>
-                    ))}
+                    {departments.length > 0 ? (
+                      departments.map((dep) => (
+                        <div
+                          key={dep._id}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            selectOption("department", dep._id);
+                          }}
+                          className="px-4 py-2 hover:bg-gray-700 cursor-pointer text-gray-200"
+                        >
+                          {dep.dep_name}
+                        </div>
+                      ))
+                    ) : (
+                      <div className="px-4 py-2 text-gray-400">No Departments</div>
+                    )}
                   </div>
                 )}
               </div>

@@ -59,8 +59,8 @@ function App() {
             <Route path="/admin-dashboard/employees" element={<List />}></Route>
             <Route path="/admin-dashboard/add-employee" element={<Add />}></Route>
             <Route path="/admin-dashboard/employee/view/:id" element={<View />}></Route>
-            <Route path="/admin-dashboard/employee/:id" element={<Edit />}></Route>
             <Route path="/admin-dashboard/employee/salary-history/:id" element={<SalaryHistory />}></Route>
+            <Route path="/admin-dashboard/employee/:id" element={<Edit />}></Route>
             <Route path="/admin-dashboard/salary/:id" element={<SalaryDetails />}></Route>
 
             <Route path="/admin-dashboard/salaries" element={<SalaryList />}></Route>

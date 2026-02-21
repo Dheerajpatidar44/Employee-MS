@@ -29,7 +29,7 @@ const EmployeeSummary = () => {
     const fetchEmployeeSummary = async () => {
       try {
         // Fetch employee data - you can add more API calls as backend endpoints become available
-        const response = await axios.get('http://localhost:2000/api/employee/', {
+        const response = await axios.get('http://localhost:5000/api/employee/', {
           headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
         });
 
@@ -171,10 +171,9 @@ const EmployeeSummary = () => {
                   <p className="text-white font-medium text-sm sm:text-base truncate">{announcement.title}</p>
                   <p className="text-gray-400 text-xs">{announcement.date}</p>
                 </div>
-                <div className={`w-2 h-2 rounded-full mt-2 flex-shrink-0 ${
-                  announcement.priority === 'high' ? 'bg-red-400' :
-                  announcement.priority === 'medium' ? 'bg-yellow-400' : 'bg-green-400'
-                }`} />
+                <div className={`w-2 h-2 rounded-full mt-2 flex-shrink-0 ${announcement.priority === 'high' ? 'bg-red-400' :
+                    announcement.priority === 'medium' ? 'bg-yellow-400' : 'bg-green-400'
+                  }`} />
               </div>
             ))}
           </div>

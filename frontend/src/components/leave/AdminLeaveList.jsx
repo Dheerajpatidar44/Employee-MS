@@ -466,7 +466,7 @@ const AdminLeaveList = () => {
                     <div className="relative mb-8 group">
                       <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 via-pink-400 to-orange-400 rounded-full blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-500 animate-pulse"></div>
                       <img
-                        src={selectedLeave.employeeId?.userId?.profileImage ? `http://localhost:2000/public/uploads/${selectedLeave.employeeId.userId.profileImage}` : '/image.jpg'}
+                        src={selectedLeave.employeeId?.userId?.profileImage ? `http://localhost:5000/public/uploads/${selectedLeave.employeeId.userId.profileImage}` : '/image.jpg'}
                         alt="Profile"
                         className="relative w-56 h-56 rounded-full object-cover border-4 border-yellow-400 shadow-2xl hover:scale-105 transition-transform duration-300"
                       />

@@ -6,7 +6,7 @@ const AddDepartment = () => {
     dep_name: "",
     description: ""
   })
-const navigate = useNavigate();
+  const navigate = useNavigate();
   const handleChange = (e) => {
     setDepartment({ ...department, [e.target.name]: e.target.value })
   }
@@ -15,20 +15,20 @@ const navigate = useNavigate();
     e.preventDefault()
     console.log(department)
     try {
-        const response = await axios.post('http://localhost:2000/api/department/add',  department, {
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
-            }
-        });
-        if(response.data.success){
-            navigate("/admin-dashboard/department");
+      const response = await axios.post('http://localhost:5000/api/department/add', department, {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
-    } catch(error){
-        if(error.response && error.response.data && !error.response.data.success){
-            alert(error.response.data.error);
+      });
+      if (response.data.success) {
+        navigate("/admin-dashboard/department");
+      }
+    } catch (error) {
+      if (error.response && error.response.data && !error.response.data.success) {
+        alert(error.response.data.error);
+      }
     }
   }
-}
 
   return (
     <div className="max-w-3xl mx-auto mt-10 p-6 bg-gray-900/70 backdrop-blur-md border border-gray-700 rounded-xl shadow-lg text-white">

@@ -1,4 +1,4 @@
-                                                                                                                                                                                                                                                                                                                                                                                                                            import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../../context/useAuth';
@@ -52,7 +52,7 @@ const ViewSalary = () => {
           }
         } else {
           // For admin dashboard, fetch specific salary by id
-          const response = await axios.get(`http://localhost:2000/api/salary/${id}`, {
+          const response = await axios.get(`http://localhost:5000/api/salary/${id}`, {
             headers: {
               'Authorization': `Bearer ${localStorage.getItem('token')}`
             }

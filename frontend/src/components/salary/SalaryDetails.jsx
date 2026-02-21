@@ -46,7 +46,7 @@ const SalaryDetails = () => {
         axios.get(`http://localhost:2000/api/employee/${id}`, {
           headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
         }),
-        axios.get(`http://localhost:2000/api/salary/employee/${id}`, {
+        axios.get(`http://localhost:5000/api/salary/employee/${id}`, {
           headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
         })
       ]);
@@ -125,11 +125,11 @@ const SalaryDetails = () => {
 
       let response;
       if (editingSalary) {
-        response = await axios.put(`http://localhost:2000/api/salary/${editingSalary._id}`, salaryData, {
+        response = await axios.put(`http://localhost:5000/api/salary/${editingSalary._id}`, salaryData, {
           headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
         });
       } else {
-        response = await axios.post('http://localhost:2000/api/salary/add', salaryData, {
+        response = await axios.post('http://localhost:5000/api/salary/add', salaryData, {
           headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
         });
       }
@@ -164,7 +164,7 @@ const SalaryDetails = () => {
     if (!window.confirm('Are you sure you want to delete this salary record?')) return;
 
     try {
-      const response = await axios.delete(`http://localhost:2000/api/salary/${salaryId}`, {
+      const response = await axios.delete(`http://localhost:5000/api/salary/${salaryId}`, {
         headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
       });
 

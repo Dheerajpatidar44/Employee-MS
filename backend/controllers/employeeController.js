@@ -9,7 +9,7 @@ import jwt from 'jsonwebtoken'
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) =>{
-        cb(null, "public/uploads")
+        cb(null, path.join(process.cwd(), "public/uploads"))
     },
     filename: (req, file, cb)=>{
         cb(null, Date.now() + path.extname(file.originalname))
@@ -69,7 +69,12 @@ const addEmployee = async (req, res) => {
 
     }catch(error){
         console.error('Error adding employee:', error)
-        return res.status(500).json({success: false, message: 'Server error in adding employee'})
+        // Return detailed error for debugging
+        if (error.code === 11000) {
+            const field = Object.keys(error.keyPattern)[0]
+            return res.status(400).json({success: false, error: `${field === 'email' ? 'Email' : 'Employee ID'} already exists`})
+        }
+        return res.status(500).json({success: false, error: error.message || 'Server error in adding employee'})
     }
 }
 
@@ -155,7 +160,7 @@ const updateEmployee = async (req, res) => {
         if (!email || email.trim() === '') {
             return res.status(400).json({ success: false, error: 'Email is required' })
         }
-
+ 
         // Update user fields
         user.name = name.trim()
         const trimmedEmail = email.trim()

@@ -1,4 +1,4 @@
-                         import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../../context/useAuth';
@@ -115,7 +115,7 @@ const SalaryHistory = () => {
 
       // Try to fetch salary history (optional)
       try {
-        const salaryResponse = await axios.get(`http://localhost:2000/api/salary/employee/${employeeId}`, {
+        const salaryResponse = await axios.get(`http://localhost:5000/api/salary/employee/${employeeId}`, {
           headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
         });
 
@@ -292,7 +292,7 @@ const SalaryHistory = () => {
                 </div>
                 <DollarSign className="w-8 h-8 text-green-400" />
               </div>
-            </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+            </div>
 
             <div className="bg-gray-800/60 backdrop-blur-lg rounded-xl p-6 border border-gray-700">
               <div className="flex items-center justify-between">

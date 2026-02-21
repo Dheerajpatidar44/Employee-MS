@@ -4,34 +4,34 @@ import axios from 'axios'
 import { History, DollarSign } from 'lucide-react'
 
 const View = () => {
-    const {id} = useParams()
-    const navigate = useNavigate()
-    const [employee, setEmployee] = useState(null)
-    const [loading, setLoading] = useState(true)
+  const { id } = useParams()
+  const navigate = useNavigate()
+  const [employee, setEmployee] = useState(null)
+  const [loading, setLoading] = useState(true)
 
-    useEffect(() => {
-        const fetchEmployee = async () => {
-          setLoading(true)
-          try {
-            const response = await axios.get(`http://localhost:2000/api/employee/${id}`, {
-              headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
-              }
-            });
-            if (response.data.success) {
-              setEmployee(response.data.employee)
-            }
-          } catch (error) {
-            if (error.response && error.response.data && !error.response.data.success) {
-              alert(error.response.data.error);
-            }
-          } finally {
-            setLoading(false)
+  useEffect(() => {
+    const fetchEmployee = async () => {
+      setLoading(true)
+      try {
+        const response = await axios.get(`http://localhost:5000/api/employee/${id}`, {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
           }
+        });
+        if (response.data.success) {
+          setEmployee(response.data.employee)
         }
-     
-        fetchEmployee()
-      }, [id])
+      } catch (error) {
+        if (error.response && error.response.data && !error.response.data.success) {
+          alert(error.response.data.error);
+        }
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchEmployee()
+  }, [id])
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900 flex flex-col items-center py-10 px-4 text-white">
@@ -43,8 +43,8 @@ const View = () => {
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-32 h-32 bg-cyan-400 rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 right-0 w-32 h-32 bg-indigo-400 rounded-full blur-3xl"></div>
-        {/* </div> */}
-    </div>
+          {/* </div> */}
+        </div>
         <div className="relative z-10">
           <h3 className="text-4xl font-bold .text-white mb-10 text-center bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent">
             Employee Details
