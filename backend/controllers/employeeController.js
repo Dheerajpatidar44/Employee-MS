@@ -39,7 +39,8 @@ const addEmployee = async (req, res) => {
             return res.status(400).json({success: false, error: 'Department is required'})
         }
 
-        const existingUser = await User.findOne({email})
+        const normalizedEmail = email.toLowerCase().trim()
+        const existingUser = await User.findOne({email: normalizedEmail})
         if(existingUser){
             return res.status(409).json({success: false, error: 'User already registered'})
         }
@@ -47,7 +48,7 @@ const addEmployee = async (req, res) => {
 
         const newUser = new User({
             name,
-            email,
+            email: normalizedEmail,
             password: hashPassword,
             role,
             profileImage: req.file ? req.file.filename : "https://i.pinimg.com/564x/8b/16/7a/8b167af653c2399dd93b952a48740620.jpg"
@@ -160,7 +161,7 @@ const updateEmployee = async (req, res) => {
         if (!email || email.trim() === '') {
             return res.status(400).json({ success: false, error: 'Email is required' })
         }
- 
+
         // Update user fields
         user.name = name.trim()
         const trimmedEmail = email.trim()

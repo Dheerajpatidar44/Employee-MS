@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
-import axios from "axios";
+import axios from "../../api/axios";
 
 export const AuthContext = createContext(null);
 
@@ -17,6 +17,7 @@ const AuthProvider = ({ children }) => {
       try {
         if (!token) {
           setUser(null);
+          setLoading(false);
           return;
         }
 
